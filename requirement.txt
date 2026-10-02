@@ -1,0 +1,581 @@
+NEUROBRIDGE
+Making workplaces work for every mind.
+Core idea:
+A digital workplace platform that helps neurodivergent employees understand and communicate their working preferences, while giving managers and HR practical tools to create a more inclusive workplace.
+________________________________________
+1. WEBSITE STRUCTURE
+Your website should have three main user pathways:
+👤 Employee
+Understand yourself → Create your work profile → Get personalised support → Communicate your needs → Track your experience
+👩‍💼 Manager
+Understand employee preferences → Get practical recommendations → Improve communication → Support performance
+🏢 HR
+Build inclusive hiring → Manage accommodations → Identify workplace barriers → Analyse organisational trends
+So the homepage should ask:
+How would you like to use NeuroBridge?
+Three buttons:
+I'm an Employee
+I'm a Manager
+I'm an HR Professional
+________________________________________
+2. HOMEPAGE
+The homepage should immediately explain the problem.
+Hero section
+Different minds. Different strengths.
+One workplace where everyone can thrive.
+NeuroBridge helps organisations create workplaces where different ways of thinking, communicating and working are understood and supported.
+Buttons:
+Get Started
+For Organisations
+See How It Works
+________________________________________
+Section: The problem
+The workplace wasn't designed for everyone.
+Traditional workplaces often expect employees to:
+•	Communicate in the same way 
+•	Perform well in traditional interviews 
+•	Attend frequent meetings 
+•	Work in noisy environments 
+•	Understand vague instructions 
+•	Adapt to rigid processes 
+Then:
+NeuroBridge helps organisations move from “fit into the workplace” to “design a workplace that works for different people.”
+________________________________________
+3. LOGIN / SIGN UP
+When someone clicks Get Started, they create an account.
+Choose your role:
+Employee
+Manager
+HR / Organisation
+Then:
+Employee registration
+•	Name 
+•	Email 
+•	Organisation 
+•	Job role 
+•	Department 
+•	Password 
+Then an important privacy message:
+Your information belongs to you.
+NeuroBridge does not require you to disclose a diagnosis to create a work-style profile.
+Button:
+Create My Profile →
+4. EMPLOYEE JOURNEY
+This is the most important part of your MVP.
+The employee journey should be approximately:
+Step 1 → Step 2 → Step 3 → Step 4 → Step 5 → Step 6
+________________________________________
+STEP 1 — WORK-STYLE ASSESSMENT
+Instead of starting with:
+“Do you have autism/ADHD/dyslexia?”
+I would make your platform work-style focused.
+The assessment asks questions such as:
+Communication
+How do you prefer to receive instructions?
+○ Verbal
+○ Written
+○ Visual
+○ Combination
+________________________________________
+Meetings
+Which meeting situation works best for you?
+○ I prefer advance notice
+○ I prefer an agenda
+○ I prefer knowing what I need to contribute
+○ I prefer shorter meetings
+○ No preference
+________________________________________
+Focus
+When do you work best?
+○ Short bursts
+○ Long uninterrupted periods
+○ With regular breaks
+○ With frequent check-ins
+________________________________________
+Environment
+Which environment helps you concentrate?
+○ Quiet
+○ Background noise
+○ Remote
+○ Office
+○ Flexible
+________________________________________
+Feedback
+How do you prefer feedback?
+○ Direct and specific
+○ Written
+○ One-to-one
+○ Immediate
+○ Time to process before responding
+________________________________________
+Task management
+When given a large project, what helps you most?
+○ Breaking it into smaller tasks
+○ Clear deadlines
+○ Examples
+○ Check-ins
+○ Written instructions
+________________________________________
+At the end:
+Generate My Work Profile
+________________________________________
+STEP 2 — "HOW I WORK BEST" PROFILE
+This becomes the employee's central profile.
+Example:
+🧠 My Work Profile
+Communication
+I work best with:
+Written instructions + clear expectations.
+Meetings
+I work best with:
+An agenda before meetings.
+Focus
+I work best with:
+Uninterrupted blocks of focused work.
+Feedback
+I prefer:
+Specific and direct feedback.
+Environment
+I prefer:
+A low-distraction environment.
+Task Management
+I benefit from:
+Breaking large projects into smaller steps.
+________________________________________
+Then:
+🔒 Privacy Settings
+The employee chooses:
+Who can see this information?
+☑ Me
+☑ My manager
+☐ HR
+☐ Team members
+And individual sections can be controlled.
+This is extremely important because you don't want your product to become a system where employees feel labelled or exposed.
+________________________________________
+STEP 3 — PERSONAL DASHBOARD
+Once the profile is created, the employee gets their dashboard.
+👋 Welcome back!
+Today's workspace
+Focus
+🟢 Good
+Task load
+🟡 Moderate
+Meetings
+🔴 High
+Energy
+🟡 Moderate
+Then:
+Today's Tasks
+☐ Prepare presentation
+☐ Respond to emails
+☐ Complete market research
+☐ Team meeting – 3 PM
+The platform could allow the employee to click:
+Break this task down
+For example:
+Complete marketing project
+becomes:
+1.	Define objective 
+2.	Research competitors 
+3.	Collect data 
+4.	Analyse findings 
+5.	Create slides 
+6.	Review 
+7.	Submit 
+________________________________________
+STEP 4 — AI WORKPLACE ASSISTANT
+This could be one of the strongest features.
+Call it something like:
+🤖 NeuroBridge Assistant
+The employee can type:
+“I have a presentation tomorrow and don't know where to start.”
+The assistant could respond with:
+Let's break it down.
+1. Define your topic — 15 min
+2. Create 3–5 key points — 20 min
+3. Build your slides — 45 min
+4. Practice — 20 min
+5. Final review — 10 min
+________________________________________
+Another example:
+Employee:
+“My manager gave me a task but I don't understand what they want.”
+The assistant could help turn the instruction into:
+What is the task?
+What is the deadline?
+What does success look like?
+What information do you need?
+It could also help draft:
+“Hi, just to make sure I understand the task correctly, my understanding is…”
+This makes the AI useful without pretending to diagnose or treat anyone.
+________________________________________
+STEP 5 — WORKPLACE SUPPORT
+Create a section called:
+🧩 What would help me?
+The employee sees categories.
+Communication
+I need clearer instructions
+Environment
+I need a quieter workspace
+Meetings
+I need agendas in advance
+Scheduling
+I benefit from flexible working
+Tasks
+I need large tasks broken down
+Feedback
+I prefer written feedback
+The employee can select what they need.
+________________________________________
+STEP 6 — REQUEST SUPPORT
+If the employee wants organisational support, they can click:
+Request Workplace Support
+The platform asks:
+What type of support would help you?
+☐ Communication
+☐ Workspace
+☐ Scheduling
+☐ Meetings
+☐ Task management
+☐ Other
+Then:
+How would you like to handle this?
+Option A — Share with manager
+Option B — Share with HR
+Option C — Ask NeuroBridge for guidance first
+This gives the employee control over disclosure.
+________________________________________
+5. MANAGER SIDE
+Now imagine the manager logs in.
+They should NOT see an employee's diagnosis.
+Instead, they see:
+👩‍💼 Manager Dashboard
+Your team
+Employee	Work preferences	Support
+Employee A	Written instructions	View
+Employee B	Advance meeting notice	View
+Employee C	Flexible focus time	View
+But only if employees have chosen to share that information.
+________________________________________
+6. MANAGER — EMPLOYEE PROFILE
+The manager clicks on an employee.
+They see:
+How to work effectively with this employee
+Communication
+Recommended:
+Provide written follow-up after important verbal instructions.
+Meetings
+Recommended:
+Share agenda beforehand.
+Feedback
+Recommended:
+Use specific and actionable feedback.
+Tasks
+Recommended:
+Clarify priorities and deadlines.
+Then:
+💡 Why this matters
+Different employees may process information and communicate differently. These recommendations are designed to support effective collaboration.
+________________________________________
+7. MANAGER — "WHAT SHOULD I DO?"
+This could be a very useful feature.
+Manager enters:
+“My employee isn't participating in meetings.”
+NeuroBridge could provide possible workplace approaches:
+Try:
+1.	Send questions before the meeting. 
+2.	Give the employee time to prepare. 
+3.	Don't assume silence means lack of engagement. 
+4.	Offer alternative ways to contribute. 
+5.	Follow up after the meeting. 
+Then:
+Avoid assuming behaviour = lack of ability or motivation.
+This is where your platform becomes an education + action tool.
+________________________________________
+8. MANAGER LEARNING CENTRE
+Create:
+🎓 Inclusive Manager Academy
+Short modules:
+Module 1
+Understanding Neurodiversity
+Module 2
+Inclusive Communication
+Module 3
+Running Inclusive Meetings
+Module 4
+Giving Effective Feedback
+Module 5
+Inclusive Performance Management
+Module 6
+Supporting Different Work Styles
+Each module could be 5–10 minutes.
+At the end:
+Complete Module → Take Quiz → Earn Badge
+________________________________________
+9. HR DASHBOARD
+This is where you make the platform attractive to companies.
+HR logs in and sees:
+🏢 HR Dashboard
+Organisation Overview
+Employees using NeuroBridge
+1,248
+Active work profiles
+876
+Support requests
+64
+Manager participation
+72%
+________________________________________
+10. HR — WORKPLACE INSIGHTS
+Show aggregated information.
+For example:
+Common workplace barriers
+Meeting overload
+████████████ 42%
+Unclear instructions
+██████████ 35%
+Noise/distraction
+███████ 24%
+Rigid schedules
+██████ 20%
+Feedback style
+████ 15%
+Important:
+Insights are aggregated and anonymised.
+HR should not be able to use the dashboard to identify an individual employee's private responses unless that employee has explicitly shared the information.
+________________________________________
+11. HR — INCLUSIVE HIRING TOOL
+This connects directly to your dissertation.
+Create:
+🔎 Neuroinclusive Recruitment
+HR enters a job description.
+NeuroBridge analyses it.
+Example:
+Original
+“Excellent communication skills and ability to thrive in a fast-paced environment.”
+NeuroBridge might flag:
+⚠️ Potentially vague requirement
+And suggest:
+“Ability to communicate project updates clearly through written or verbal channels.”
+Then:
+Interview checklist
+☑ Clear interview instructions
+☑ Interview format explained
+☑ Questions shared where appropriate
+☑ Skills-based assessment
+☑ Reasonable flexibility
+☑ Consistent scoring criteria
+________________________________________
+12. HR — ONBOARDING
+Another feature:
+🚀 Neuroinclusive Onboarding
+When a new employee joins:
+Before Day 1
+☐ Send clear joining instructions
+☐ Provide schedule
+☐ Explain workplace expectations
+☐ Share contact information
+☐ Provide required documents
+Week 1
+☐ Manager introduction
+☐ Role expectations
+☐ Communication preferences
+☐ Team structure
+☐ First tasks
+First 30 days
+☐ Check-in
+☐ Feedback
+☐ Workload review
+☐ Support review
+________________________________________
+13. ACCOMMODATION / SUPPORT CENTRE
+HR can manage requests.
+Example:
+Support Request #1024
+Type: Workplace environment
+Request: Quiet workspace
+Status: Under review
+Action:
+○ Approved
+○ Need more information
+○ Alternative support
+○ Declined
+This should include appropriate privacy/security controls in a real product.
+________________________________________
+14. COMPANY ANALYTICS
+Your premium HR dashboard could eventually show:
+Neuroinclusion Score
+For example:
+72 / 100
+Based on areas such as:
+•	Inclusive recruitment 
+•	Manager training 
+•	Employee support 
+•	Workplace accessibility 
+•	Communication 
+•	Employee feedback 
+Then:
+Areas to improve
+🔴 Recruitment accessibility
+🟡 Manager training
+🟢 Employee support
+This gives HR something measurable.
+________________________________________
+15. RESOURCE CENTRE
+Create a simple library.
+🧠 Neurodiversity 101
+What is neurodiversity?
+💬 Communication
+How to communicate effectively with different working styles.
+🏢 Workplace
+Creating sensory-friendly environments.
+👩‍💼 Managers
+Practical management strategies.
+🎯 Recruitment
+How to make recruitment more inclusive.
+📋 Employees
+Understanding and communicating your workplace preferences.
+________________________________________
+16. FEEDBACK SYSTEM
+After using the platform, employees can answer:
+How was your work experience this week?
+⭐ ⭐ ⭐ ⭐ ⭐
+Then:
+What was challenging?
+☐ Communication
+☐ Meetings
+☐ Workload
+☐ Environment
+☐ Tasks
+☐ Management
+What helped?
+[Text box]
+This information contributes to aggregated HR insights.
+________________________________________
+17. THE COMPLETE USER FLOW
+For your presentation, this is the simplest way to explain your MVP:
+EMPLOYEE
+Sign up
+↓
+Work-style assessment
+↓
+Create "How I Work Best" profile
+↓
+Personal dashboard
+↓
+AI workplace assistant
+↓
+Personalised recommendations
+↓
+Request/share workplace support
+↓
+Track experience
+________________________________________
+MANAGER
+Sign up
+↓
+View shared employee preferences
+↓
+Receive practical recommendations
+↓
+Use inclusive communication tools
+↓
+Complete manager training
+↓
+Track team support
+________________________________________
+HR
+Organisation dashboard
+↓
+Inclusive recruitment
+↓
+Employee onboarding
+↓
+Accommodation/support management
+↓
+Manager training
+↓
+Anonymous organisational insights
+↓
+Neuroinclusion improvement plan
+________________________________________
+18. YOUR MVP SHOULD NOT HAVE EVERYTHING
+This is very important when you present it to your professor.
+Don't say:
+"We're going to build all of this immediately."
+Say:
+Phase 1 — MVP
+Build only:
+1. Employee assessment
+↓
+2. How I Work Best profile
+↓
+3. AI task/communication assistant
+↓
+4. Manager recommendation page
+↓
+5. Basic HR dashboard
+That's enough to demonstrate your concept.
+Phase 2
+Add:
+•	Recruitment tool 
+•	Onboarding 
+•	Accommodation requests 
+•	Manager Academy 
+•	Employee feedback 
+Phase 3
+Add:
+•	Advanced analytics 
+•	Enterprise integrations 
+•	Personalisation 
+•	Accessibility ecosystem 
+•	Broader workplace accessibility 
+________________________________________
+19. WHAT YOUR WEBSITE MENU SHOULD LOOK LIKE
+At the top:
+NEUROBRIDGE
+Home | How It Works | Employee | Manager | HR | Resources | About
+Right side:
+Log In
+Get Started
+Once logged in, the navigation changes according to the user.
+Employee
+Dashboard | My Profile | Assistant | Support | Resources | Settings
+Manager
+Dashboard | My Team | Recommendations | Training | Resources
+HR
+Dashboard | Recruitment | Employees | Support | Analytics | Training | Settings
+________________________________________
+20. YOUR UNIQUE VALUE PROPOSITION
+Put this prominently on the website:
+NeuroBridge doesn't ask:
+“How can the employee fit the workplace?”
+It asks:
+“How can the workplace work better for the employee?”
+That can become the central message of your entire project.
+And because you're coming from an HR/talent-acquisition perspective, your strongest positioning is:
+Recruit → Onboard → Support → Retain
+rather than making NeuroBridge only an app for neurodivergent individuals.
+Your complete product ecosystem becomes:
+ATTRACT
+Neuroinclusive recruitment
+↓
+ONBOARD
+Structured and personalised onboarding
+↓
+UNDERSTAND
+Work-style profile
+↓
+SUPPORT
+AI + workplace recommendations
+↓
+ENABLE
+Manager + HR tools
+↓
+MEASURE
+Anonymous organisational insights
+↓
+RETAIN
+Better workplace experience
+

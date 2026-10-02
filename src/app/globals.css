@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: var(--font-outfit), system-ui, -apple-system, sans-serif;
+    --font-sans: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+
+    /* Benchmark Luxury Palette: Forest Emerald & Deep Slate */
+    --color-primary: #0F766E;        /* Deep refined teal */
+    --color-primary-dark: #115E59;
+    --color-primary-light: #CCFBF1;
+    --color-secondary: #4338CA;      /* Royal Indigo */
+    --color-accent: #D97706;         /* Warm amber */
+    --color-bg-warm: #FBFBFA;        /* Alabaster Warm Studio */
+    --color-surface: #FFFFFF;
+    --color-surface-hover: #F8FAFC;
+    --color-border-subtle: #EBEBEA;
+    --color-border-strong: #D1D5DB;
+    --color-text-main: #18181B;      /* Zinc 900 */
+    --color-text-muted: #52525B;     /* Zinc 600 */
+  }
+
+  body {
+    background-color: var(--color-bg-warm);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+  }
+
+  /* Calm Mode Theme Overrides */
+  .calm-mode {
+    --color-bg-warm: #F3F5F4;
+    --color-text-main: #27272A;
+    --color-text-muted: #52525B;
+    background-color: var(--color-bg-warm);
+  }
+
+  /* Dyslexia-Friendly High Legibility */
+  .high-legibility {
+    letter-spacing: 0.04em !important;
+    word-spacing: 0.1em !important;
+    line-height: 1.85 !important;
+  }
+}
+
+/* Micro-dot ambient background */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Premium Apple-Style Glass Card */
+.premium-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(230, 230, 230, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 6px 16px -4px rgba(0, 0, 0, 0.04);
+  border-radius: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+  border-color: rgba(200, 200, 200, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 12px 28px -6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
