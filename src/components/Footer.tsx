@@ -2,146 +2,172 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Brain, ShieldCheck, Heart, ArrowRight } from 'lucide-react';
+import {
+  Brain, ShieldCheck, Heart, ArrowRight,
+  UserCheck, Briefcase, Building2, BookOpen,
+  Search, Rocket, Puzzle, LayoutDashboard, GraduationCap
+} from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Value Prop Banner */}
-        <div className="bg-gradient-to-r from-teal-900/40 via-indigo-900/40 to-slate-900 border border-slate-700/60 rounded-2xl p-8 mb-16 relative overflow-hidden">
-          <div className="max-w-3xl">
-            <span className="text-teal-400 text-xs font-bold uppercase tracking-wider bg-teal-950/80 px-3 py-1 rounded-full border border-teal-800 inline-block mb-4">
-              Our Core Philosophy
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-snug">
-              “NeuroBridge doesn&apos;t ask: <span className="text-slate-400 italic">How can the employee fit into the workplace?</span> It asks: <span className="text-teal-300 font-extrabold">How can the workplace work better for every employee?</span>”
+    <footer style={{ background: 'var(--nb-bg-2)', borderTop: '1px solid var(--nb-border)', paddingTop: '64px', paddingBottom: '48px' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+
+        {/* Philosophy Banner */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(45,212,191,0.06) 0%, rgba(79,70,229,0.08) 100%)',
+          border: '1px solid var(--nb-border-lg)',
+          borderRadius: '20px', padding: '40px', marginBottom: '64px',
+          position: 'relative', overflow: 'hidden',
+        }}>
+          {/* Orb */}
+          <div style={{
+            position: 'absolute', top: '-40px', right: '-40px',
+            width: '200px', height: '200px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(45,212,191,0.1), transparent 70%)',
+            filter: 'blur(40px)', pointerEvents: 'none',
+          }} />
+
+          <div style={{ position: 'relative', maxWidth: '680px' }}>
+            <div className="glow-badge inline-flex mb-4">
+              <Brain style={{ width: '12px', height: '12px' }} />
+              <span>Our Core Philosophy</span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 800, color: 'var(--nb-text-1)', lineHeight: 1.4, marginTop: '12px', marginBottom: '12px', letterSpacing: '-0.025em' }}>
+              NeuroBridge doesn't ask:{' '}
+              <span style={{ color: 'var(--nb-text-3)', fontStyle: 'italic', fontWeight: 600 }}>
+                "How can the employee fit into the workplace?"
+              </span>
+              {' '}It asks:{' '}
+              <span className="text-gradient">
+                "How can the workplace work better for every employee?"
+              </span>
             </h2>
-            <p className="mt-3 text-slate-300 text-sm">
+            <p style={{ fontSize: '0.875rem', color: 'var(--nb-text-2)', lineHeight: 1.7, marginBottom: '24px' }}>
               Empowering neurodivergent talent through work-style clarity, actionable management guidance, and neuroinclusive HR design.
             </p>
-          </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/assessment"
-              className="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition"
-            >
-              <span>Start Work-Style Assessment</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/resources"
-              className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium px-5 py-2.5 rounded-xl text-sm border border-slate-700 transition"
-            >
-              <span>Explore Resource Library</span>
-            </Link>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+              <Link href="/assessment" className="btn-primary" style={{ fontSize: '13px', padding: '10px 20px' }}>
+                Start Work-Style Assessment
+                <ArrowRight style={{ width: '14px', height: '14px' }} />
+              </Link>
+              <Link href="/resources" className="btn-ghost" style={{ fontSize: '13px', padding: '10px 20px' }}>
+                Explore Resource Library
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
-          {/* Col 1: Brand & Privacy */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-teal-600 flex items-center justify-center text-white">
-                <Brain className="w-5 h-5" />
+        {/* Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '40px', paddingBottom: '48px', borderBottom: '1px solid var(--nb-border)' }}>
+
+          {/* Brand */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div style={{
+                width: '36px', height: '36px', borderRadius: '10px',
+                background: 'linear-gradient(135deg, var(--nb-teal-dim), var(--nb-indigo-deep))',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'white', boxShadow: '0 0 20px rgba(45,212,191,0.2)',
+              }}>
+                <Brain style={{ width: '18px', height: '18px' }} />
               </div>
-              <span className="font-extrabold text-xl tracking-tight text-white">
-                Neuro<span className="text-teal-400">Bridge</span>
+              <span style={{ fontWeight: 900, fontSize: '1rem', color: 'var(--nb-text-1)', letterSpacing: '-0.03em' }}>
+                Neuro<span style={{ color: 'var(--nb-teal)' }}>Bridge</span>
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Making workplaces work for every mind. Digital workplace platform bridging employees, managers, and HR.
+            <p style={{ fontSize: '12px', color: 'var(--nb-text-3)', lineHeight: 1.7 }}>
+              Making workplaces work for every mind. A platform bridging employees, managers, and HR through neuro-inclusive design.
             </p>
-            <div className="flex items-center gap-2 text-xs text-teal-300 bg-teal-950/60 p-2.5 rounded-lg border border-teal-900/80">
-              <ShieldCheck className="w-4 h-4 text-teal-400 shrink-0" />
-              <span>Zero-Diagnosis Required. You own your privacy.</span>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              padding: '10px 14px', borderRadius: '10px',
+              background: 'rgba(45,212,191,0.06)', border: '1px solid rgba(45,212,191,0.15)',
+              fontSize: '11px', color: 'var(--nb-teal)', fontWeight: 600,
+            }}>
+              <ShieldCheck style={{ width: '14px', height: '14px', flexShrink: 0 }} />
+              Zero-Diagnosis Required. You own your privacy.
             </div>
           </div>
 
-          {/* Col 2: Pathways */}
+          {/* Pathways */}
           <div>
-            <h3 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+            <h3 style={{ color: 'var(--nb-text-1)', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px' }}>
               Workplace Pathways
             </h3>
-            <ul className="space-y-2 text-sm text-slate-400">
-              <li>
-                <Link href="/employee" className="hover:text-teal-300 transition">
-                  👤 Employee Hub & AI Assistant
-                </Link>
-              </li>
-              <li>
-                <Link href="/assessment" className="hover:text-teal-300 transition">
-                  🧠 Work-Style Assessment
-                </Link>
-              </li>
-              <li>
-                <Link href="/manager" className="hover:text-teal-300 transition">
-                  👩‍💼 Manager Dashboard & Advisor
-                </Link>
-              </li>
-              <li>
-                <Link href="/manager#academy" className="hover:text-teal-300 transition">
-                  🎓 Inclusive Manager Academy
-                </Link>
-              </li>
-              <li>
-                <Link href="/hr" className="hover:text-teal-300 transition">
-                  🏢 HR Analytics & Insights
-                </Link>
-              </li>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', listStyle: 'none', padding: 0, margin: 0 }}>
+              {[
+                { href: '/employee', icon: UserCheck, label: 'Employee Hub & AI Assistant', color: 'var(--nb-teal)' },
+                { href: '/assessment', icon: Brain, label: 'Work-Style Assessment', color: 'var(--nb-teal)' },
+                { href: '/manager', icon: Briefcase, label: 'Manager Dashboard & Advisor', color: 'var(--nb-indigo)' },
+                { href: '/manager#academy', icon: GraduationCap, label: 'Inclusive Manager Academy', color: 'var(--nb-indigo)' },
+                { href: '/hr', icon: Building2, label: 'HR Analytics & Insights', color: 'var(--nb-amber)' },
+              ].map(item => (
+                <li key={item.href}>
+                  <Link href={item.href} style={{
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                    fontSize: '13px', color: 'var(--nb-text-3)', textDecoration: 'none',
+                    transition: 'color 0.15s',
+                  }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = item.color}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'var(--nb-text-3)'}>
+                    <item.icon style={{ width: '13px', height: '13px', flexShrink: 0 }} />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 3: HR & Hiring */}
+          {/* Inclusion Ecosystem */}
           <div>
-            <h3 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+            <h3 style={{ color: 'var(--nb-text-1)', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px' }}>
               Inclusion Ecosystem
             </h3>
-            <ul className="space-y-2 text-sm text-slate-400">
-              <li>
-                <Link href="/hr#recruitment" className="hover:text-teal-300 transition">
-                  🔎 Neuroinclusive Job Scanner
-                </Link>
-              </li>
-              <li>
-                <Link href="/hr#onboarding" className="hover:text-teal-300 transition">
-                  🚀 Structured Onboarding Flow
-                </Link>
-              </li>
-              <li>
-                <Link href="/hr#accommodations" className="hover:text-teal-300 transition">
-                  🧩 Support & Accommodations
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources" className="hover:text-teal-300 transition">
-                  📚 Neurodiversity 101 Library
-                </Link>
-              </li>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', listStyle: 'none', padding: 0, margin: 0 }}>
+              {[
+                { href: '/hr#recruitment', icon: Search, label: 'Neuroinclusive Job Scanner' },
+                { href: '/hr#onboarding', icon: Rocket, label: 'Structured Onboarding Flow' },
+                { href: '/hr#accommodations', icon: Puzzle, label: 'Support & Accommodations' },
+                { href: '/resources', icon: BookOpen, label: 'Neurodiversity 101 Library' },
+              ].map(item => (
+                <li key={item.href}>
+                  <Link href={item.href} style={{
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                    fontSize: '13px', color: 'var(--nb-text-3)', textDecoration: 'none',
+                    transition: 'color 0.15s',
+                  }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = 'var(--nb-teal)'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = 'var(--nb-text-3)'}>
+                    <item.icon style={{ width: '13px', height: '13px', flexShrink: 0 }} />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 4: Project Scope */}
+          {/* Project info */}
           <div>
-            <h3 className="text-white text-xs font-bold uppercase tracking-wider mb-4">
+            <h3 style={{ color: 'var(--nb-text-1)', fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px' }}>
               Dissertation Project
             </h3>
-            <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Designed & developed as a functional digital workplace dissertation project for neuroinclusive organizational design.
+            <p style={{ fontSize: '12px', color: 'var(--nb-text-3)', lineHeight: 1.7, marginBottom: '12px' }}>
+              Designed & developed as a functional digital workplace dissertation project for neuroinclusive organisational design.
             </p>
-            <div className="text-xs text-slate-500">
-              Built with Next.js, React 19, TypeScript & Tailwind CSS. Ready for zero-cost deployment on Vercel.
+            <div style={{ fontSize: '11px', color: 'var(--nb-text-3)', padding: '10px 14px', borderRadius: '10px', background: 'var(--nb-bg-3)', border: '1px solid var(--nb-border)' }}>
+              Built with Next.js 16, React 19, TypeScript & Tailwind CSS v4. Deployed on Vercel.
             </div>
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <div>
-            © {new Date().getFullYear()} NeuroBridge. All rights reserved.
-          </div>
-          <div className="flex items-center gap-1">
+        {/* Bottom bar */}
+        <div style={{ paddingTop: '24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '16px', fontSize: '12px', color: 'var(--nb-text-3)' }}>
+          <div>© {new Date().getFullYear()} NeuroBridge. All rights reserved.</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span>Built with</span>
-            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 mx-0.5" />
+            <Heart style={{ width: '13px', height: '13px', color: '#F43F5E', fill: '#F43F5E' }} />
             <span>for cognitive diversity & inclusive design</span>
           </div>
         </div>

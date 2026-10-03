@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useApp } from '../context/AppContext';
@@ -13,7 +13,6 @@ import {
   Building2,
   Sparkles,
   ArrowRight,
-  ShieldCheck,
   ChevronDown
 } from 'lucide-react';
 
@@ -22,92 +21,141 @@ export default function Navbar() {
   const { role, setRole, calmMode } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Dynamic Navigation based on Section 19 of requirement.txt
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    if (!roleDropdownOpen) return;
+    const close = () => setRoleDropdownOpen(false);
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
+  }, [roleDropdownOpen]);
+
   const getNavLinks = () => {
     switch (role) {
       case 'employee':
         return [
           { name: 'Dashboard', href: '/employee' },
-          { name: 'Work Assessment', href: '/assessment' },
+          { name: 'Assessment', href: '/assessment' },
           { name: 'AI Assistant', href: '/employee#assistant' },
-          { name: 'Request Support', href: '/employee#support' },
-          { name: 'Resources', href: '/resources' }
+          { name: 'Resources', href: '/resources' },
         ];
       case 'manager':
         return [
           { name: 'Manager Hub', href: '/manager' },
-          { name: 'Team Preferences', href: '/manager#team' },
-          { name: '"What Should I Do?"', href: '/manager#advisor' },
-          { name: 'Manager Academy', href: '/manager#academy' },
-          { name: 'Resources', href: '/resources' }
+          { name: 'Team View', href: '/manager#team' },
+          { name: 'Advisor', href: '/manager#advisor' },
+          { name: 'Academy', href: '/manager#academy' },
+          { name: 'Resources', href: '/resources' },
         ];
       case 'hr':
         return [
           { name: 'HR Overview', href: '/hr' },
-          { name: 'Workplace Insights', href: '/hr#insights' },
-          { name: 'Inclusive Hiring AI', href: '/hr#recruitment' },
-          { name: 'Onboarding Flow', href: '/hr#onboarding' },
-          { name: 'Accommodations', href: '/hr#accommodations' }
+          { name: 'Insights', href: '/hr#insights' },
+          { name: 'Hiring AI', href: '/hr#recruitment' },
+          { name: 'Onboarding', href: '/hr#onboarding' },
+          { name: 'Accommodations', href: '/hr#accommodations' },
         ];
       default:
         return [
           { name: 'Home', href: '/' },
           { name: 'Assessment', href: '/assessment' },
-          { name: 'Employee Path', href: '/employee' },
-          { name: 'Manager Path', href: '/manager' },
-          { name: 'HR Path', href: '/hr' },
-          { name: 'Resources', href: '/resources' }
+          { name: 'Employee', href: '/employee' },
+          { name: 'Manager', href: '/manager' },
+          { name: 'HR', href: '/hr' },
+          { name: 'Resources', href: '/resources' },
         ];
     }
   };
 
   const navLinks = getNavLinks();
 
-  const roleInfo = {
-    employee: { label: 'Employee Mode', icon: UserCheck, color: 'text-teal-600 bg-teal-50 border-teal-200' },
-    manager: { label: 'Manager Mode', icon: Briefcase, color: 'text-indigo-600 bg-indigo-50 border-indigo-200' },
-    hr: { label: 'HR Admin Mode', icon: Building2, color: 'text-amber-600 bg-amber-50 border-amber-200' },
-    guest: { label: 'Guest Visitor', icon: Sparkles, color: 'text-slate-600 bg-slate-50 border-slate-200' }
+  const roleConfig = {
+    employee: { label: 'Employee Mode', icon: UserCheck, accentColor: 'var(--nb-teal)', bg: 'rgba(45,212,191,0.1)', border: 'rgba(45,212,191,0.25)' },
+    manager: { label: 'Manager Mode', icon: Briefcase, accentColor: 'var(--nb-indigo)', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+    hr: { label: 'HR Admin Mode', icon: Building2, accentColor: 'var(--nb-amber)', bg: 'rgba(251,191,36,0.1)', border: 'rgba(251,191,36,0.25)' },
+    guest: { label: 'Choose Your Role', icon: Sparkles, accentColor: 'var(--nb-text-2)', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.1)' },
   }[role];
 
   return (
-    <header className={`sticky top-[37px] z-40 border-b backdrop-blur-md transition-colors ${
-      calmMode
-        ? 'bg-[#F4F7F6]/90 border-slate-200'
-        : 'bg-white/90 border-slate-200/80 shadow-xs'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header style={{
+      position: 'sticky',
+      top: 0,
+      zIndex: 50,
+      background: scrolled
+        ? 'rgba(10, 12, 16, 0.9)'
+        : 'rgba(10, 12, 16, 0.7)',
+      backdropFilter: 'blur(20px) saturate(1.5)',
+      WebkitBackdropFilter: 'blur(20px) saturate(1.5)',
+      borderBottom: `1px solid ${scrolled ? 'rgba(255,255,255,0.08)' : 'transparent'}`,
+      transition: 'all 0.25s cubic-bezier(0.4,0,0.2,1)',
+    }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 via-indigo-600 to-indigo-700 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition transform">
-              <Brain className="w-5 h-5" />
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <div style={{
+              width: '38px', height: '38px', borderRadius: '10px',
+              background: 'linear-gradient(135deg, var(--nb-teal-dim) 0%, var(--nb-indigo-deep) 100%)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: 'white', boxShadow: '0 0 20px rgba(45,212,191,0.25)',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+            }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.transform = 'scale(1.05)';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 30px rgba(45,212,191,0.4)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.transform = '';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(45,212,191,0.25)';
+              }}>
+              <Brain style={{ width: '20px', height: '20px' }} />
             </div>
             <div>
-              <span className="font-extrabold text-xl tracking-tight text-slate-900 flex items-center gap-1">
-                Neuro<span className="text-teal-600">Bridge</span>
-              </span>
-              <span className="text-[10px] block font-medium text-slate-500 -mt-1 tracking-wider uppercase">
+              <div style={{ fontWeight: 900, fontSize: '1.1rem', letterSpacing: '-0.03em', color: 'var(--nb-text-1)', lineHeight: 1 }}>
+                Neuro<span style={{ color: 'var(--nb-teal)' }}>Bridge</span>
+              </div>
+              <div style={{ fontSize: '9px', fontWeight: 700, color: 'var(--nb-text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '1px' }}>
                 Workplace Inclusion
-              </span>
+              </div>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          {/* Desktop Nav */}
+          <nav style={{ display: 'none', alignItems: 'center', gap: '2px' }} className="hidden md:flex">
             {navLinks.map(link => {
               const isActive = pathname === link.href;
               return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${
-                    isActive
-                      ? 'bg-slate-100 text-teal-700 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
+                <Link key={link.name} href={link.href} style={{
+                  padding: '7px 14px',
+                  borderRadius: '8px',
+                  fontSize: '13px',
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? 'var(--nb-text-1)' : 'var(--nb-text-2)',
+                  background: isActive ? 'rgba(255,255,255,0.07)' : 'transparent',
+                  border: isActive ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
+                  textDecoration: 'none',
+                  transition: 'all 0.15s',
+                }}
+                  onMouseEnter={e => {
+                    if (!isActive) {
+                      (e.currentTarget as HTMLElement).style.color = 'var(--nb-text-1)';
+                      (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!isActive) {
+                      (e.currentTarget as HTMLElement).style.color = 'var(--nb-text-2)';
+                      (e.currentTarget as HTMLElement).style.background = 'transparent';
+                    }
+                  }}>
                   {link.name}
                 </Link>
               );
@@ -115,145 +163,133 @@ export default function Navbar() {
           </nav>
 
           {/* Right Actions */}
-          <div className="hidden sm:flex items-center gap-3">
-            {/* Active Persona Badge Dropdown */}
-            <div className="relative">
+          <div className="hidden sm:flex" style={{ alignItems: 'center', gap: '10px' }}>
+            {/* Role badge */}
+            <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold border transition ${roleInfo.color}`}
-              >
-                <roleInfo.icon className="w-3.5 h-3.5" />
-                <span>{roleInfo.label}</span>
-                <ChevronDown className="w-3 h-3 opacity-60" />
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '7px',
+                  padding: '7px 14px', borderRadius: '8px',
+                  background: roleConfig.bg,
+                  border: `1px solid ${roleConfig.border}`,
+                  color: roleConfig.accentColor,
+                  fontSize: '12px', fontWeight: 700,
+                  cursor: 'pointer', transition: 'all 0.15s',
+                }}>
+                <roleConfig.icon style={{ width: '14px', height: '14px' }} />
+                <span>{roleConfig.label}</span>
+                <ChevronDown style={{ width: '12px', height: '12px', opacity: 0.7 }} />
               </button>
 
               {roleDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="px-3 py-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                <div onMouseDown={e => e.stopPropagation()} style={{
+                  position: 'absolute', right: 0, top: 'calc(100% + 8px)',
+                  width: '220px',
+                  background: 'var(--nb-bg-4)',
+                  border: '1px solid var(--nb-border-lg)',
+                  borderRadius: '14px',
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
+                  padding: '8px',
+                  zIndex: 100,
+                }}>
+                  <div style={{ padding: '6px 10px 4px', fontSize: '10px', fontWeight: 700, color: 'var(--nb-text-3)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Switch Perspective
                   </div>
-                  <button
-                    onClick={() => {
-                      setRole('employee');
-                      setRoleDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-teal-50 text-slate-700 hover:text-teal-700"
-                  >
-                    <UserCheck className="w-4 h-4 text-teal-600" />
-                    <div>
-                      <div className="font-semibold">Employee</div>
-                      <div className="text-[10px] text-slate-400">Work profile, AI assistant, support</div>
-                    </div>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setRole('manager');
-                      setRoleDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700"
-                  >
-                    <Briefcase className="w-4 h-4 text-indigo-600" />
-                    <div>
-                      <div className="font-semibold">Manager</div>
-                      <div className="text-[10px] text-slate-400">Team preferences, academy, advisor</div>
-                    </div>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setRole('hr');
-                      setRoleDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-amber-50 text-slate-700 hover:text-amber-700"
-                  >
-                    <Building2 className="w-4 h-4 text-amber-600" />
-                    <div>
-                      <div className="font-semibold">HR / Organisation</div>
-                      <div className="text-[10px] text-slate-400">Insights, recruitment AI, onboarding</div>
-                    </div>
-                  </button>
+                  {([
+                    { r: 'employee', label: 'Employee', sub: 'Work profile, AI assistant', icon: UserCheck, color: 'var(--nb-teal)' },
+                    { r: 'manager', label: 'Manager', sub: 'Team preferences, academy', icon: Briefcase, color: 'var(--nb-indigo)' },
+                    { r: 'hr', label: 'HR / Organisation', sub: 'Insights, recruitment AI', icon: Building2, color: 'var(--nb-amber)' },
+                  ] as const).map(item => (
+                    <button key={item.r}
+                      onClick={() => { setRole(item.r); setRoleDropdownOpen(false); }}
+                      style={{
+                        width: '100%', textAlign: 'left',
+                        display: 'flex', alignItems: 'center', gap: '10px',
+                        padding: '10px', borderRadius: '10px',
+                        background: 'transparent', border: 'none',
+                        cursor: 'pointer', transition: 'background 0.12s',
+                        color: 'var(--nb-text-1)',
+                      }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}>
+                      <item.icon style={{ width: '16px', height: '16px', color: item.color, flexShrink: 0 }} />
+                      <div>
+                        <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--nb-text-1)' }}>{item.label}</div>
+                        <div style={{ fontSize: '10px', color: 'var(--nb-text-3)' }}>{item.sub}</div>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
 
-            <Link
-              href="/assessment"
-              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-teal-600 to-indigo-600 hover:from-teal-700 hover:to-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition transform hover:scale-[1.02]"
-            >
+            {/* CTA */}
+            <Link href="/assessment" className="btn-primary" style={{ padding: '8px 18px', fontSize: '13px' }}>
               <span>Take Assessment</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight style={{ width: '14px', height: '14px' }} />
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Mobile burger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden"
+            style={{ padding: '8px', borderRadius: '8px', background: 'transparent', border: 'none', color: 'var(--nb-text-2)', cursor: 'pointer' }}
+            aria-label="Toggle menu">
+            {mobileMenuOpen ? <X style={{ width: '22px', height: '22px' }} /> : <Menu style={{ width: '22px', height: '22px' }} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-2">
-            Navigation ({roleInfo.label})
+        <div style={{
+          borderTop: '1px solid var(--nb-border)',
+          background: 'var(--nb-bg-2)',
+          padding: '16px 24px 24px',
+        }}>
+          <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--nb-text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
+            Navigate ({roleConfig.label})
           </div>
-          <div className="space-y-1">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '16px' }}>
             {navLinks.map(link => (
-              <Link
-                key={link.name}
-                href={link.href}
+              <Link key={link.name} href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-600"
-              >
+                style={{
+                  display: 'block', padding: '10px 14px', borderRadius: '10px',
+                  fontSize: '15px', fontWeight: 600,
+                  color: 'var(--nb-text-2)', textDecoration: 'none',
+                  transition: 'all 0.15s',
+                }}>
                 {link.name}
               </Link>
             ))}
           </div>
 
-          <div className="pt-3 border-t border-slate-100">
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-2 mb-2">
+          <div style={{ borderTop: '1px solid var(--nb-border)', paddingTop: '16px' }}>
+            <div style={{ fontSize: '10px', fontWeight: 700, color: 'var(--nb-text-3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
               Switch Persona
             </div>
-            <div className="grid grid-cols-3 gap-2">
-              <button
-                onClick={() => {
-                  setRole('employee');
-                  setMobileMenuOpen(false);
-                }}
-                className={`p-2 rounded-lg text-xs font-medium border text-center ${
-                  role === 'employee' ? 'bg-teal-50 border-teal-300 text-teal-800' : 'bg-slate-50 border-slate-200'
-                }`}
-              >
-                Employee
-              </button>
-              <button
-                onClick={() => {
-                  setRole('manager');
-                  setMobileMenuOpen(false);
-                }}
-                className={`p-2 rounded-lg text-xs font-medium border text-center ${
-                  role === 'manager' ? 'bg-indigo-50 border-indigo-300 text-indigo-800' : 'bg-slate-50 border-slate-200'
-                }`}
-              >
-                Manager
-              </button>
-              <button
-                onClick={() => {
-                  setRole('hr');
-                  setMobileMenuOpen(false);
-                }}
-                className={`p-2 rounded-lg text-xs font-medium border text-center ${
-                  role === 'hr' ? 'bg-amber-50 border-amber-300 text-amber-800' : 'bg-slate-50 border-slate-200'
-                }`}
-              >
-                HR Admin
-              </button>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px' }}>
+              {([
+                { r: 'employee', label: 'Employee', color: 'var(--nb-teal)' },
+                { r: 'manager', label: 'Manager', color: 'var(--nb-indigo)' },
+                { r: 'hr', label: 'HR Admin', color: 'var(--nb-amber)' },
+              ] as const).map(item => (
+                <button key={item.r}
+                  onClick={() => { setRole(item.r); setMobileMenuOpen(false); }}
+                  style={{
+                    padding: '10px 8px', borderRadius: '10px', textAlign: 'center',
+                    fontSize: '12px', fontWeight: 700, cursor: 'pointer',
+                    border: `1px solid ${role === item.r ? item.color : 'var(--nb-border)'}`,
+                    background: role === item.r ? `color-mix(in srgb, ${item.color} 12%, transparent)` : 'var(--nb-bg-3)',
+                    color: role === item.r ? item.color : 'var(--nb-text-2)',
+                    transition: 'all 0.15s',
+                  }}>
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>

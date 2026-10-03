@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${outfit.variable} ${plusJakarta.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans selection:bg-teal-100 selection:text-teal-900 bg-[#FBFBFA]">
+      <body className="min-h-full flex flex-col font-sans" style={{ backgroundColor: 'var(--nb-bg)', color: 'var(--nb-text-1)' }}>
         <AppProvider>
           <AccessibilityToolbar />
           <Navbar />
